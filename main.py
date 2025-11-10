@@ -1,8 +1,6 @@
 ############################################################################
-## Django ORM Standalone Python Template
+## Django ORM CashRegister
 ############################################################################
-""" Here we'll import the parts of Django we need. It's recommended to leave
-these settings as is, and skip to START OF APPLICATION section below """
 
 # Turn off bytecode generation
 import sys
@@ -19,14 +17,17 @@ django.setup()
 # Import your models for use in your script
 from db.models import *
 
-############################################################################
-## START OF APPLICATION
-############################################################################
-""" Replace the code below with your own """
+# Create product classes using input file (if db is not yet populated)
+# Ensure your current working directory is "../assignment-3-django-and-energy-group-28-crn-45894"
+if not Product.objects.all():
+    with open("products.txt") as infile:
+        lines = infile.read().split("\n")
 
-# Seed a few users in the database
-User.objects.create(name='Dan')
-User.objects.create(name='Robert')
+    for line in lines:
+        line = line.split(' ')
+        Product.objects.create(upc=int(line[0]), name=line[1], price=float(line[2]))
 
-for u in User.objects.all():
-    print(f'ID: {u.id} \tUsername: {u.name}')
+# Temporary Input Handler
+scanned_code = int(input("Enter UPC: "))
+found_product = Product.objects.get(upc=scanned_code)
+print(found_product)
