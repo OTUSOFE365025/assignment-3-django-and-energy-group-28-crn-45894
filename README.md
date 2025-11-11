@@ -37,22 +37,25 @@ django-orm/
 ```bash
 git clone github.com/OTUSOFE365025/assignment-3-django-and-energy-group-28-crn-45894@latest
 ```
+
 Create a virtual environment and install django
-```
+```bash
 python -m venv venv; source venv/bin/activate; pip install django
 ```
+
 Initialize the database
-```
+```bash
 python manage.py makemigrations db; python manage.py migrate
 ```
+
 Run the project
-```
+```bash
 python main.py
 ```
 
 # Running the Script
 
-From the src folder, run:
+Run:
 
 ```bash
 python main.py
