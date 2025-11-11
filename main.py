@@ -19,12 +19,12 @@ def seed_if_empty():
     """Seed a couple of demo products if the table is empty. Runs once."""
     if Product.objects.count() == 0:
         Product.objects.get_or_create(
-            upc="012345678905",  # leading zero kept
-            defaults={"name": "2L Milk", "price": "4.99"}
+            upc="12345",
+            defaults={"name": "Coffee", "price": "8.32"}
         )
         Product.objects.get_or_create(
-            upc="000111222333",
-            defaults={"name": "Bread Loaf", "price": "2.49"}
+            upc="67890",
+            defaults={"name": "Muffin", "price": "2.50"}
         )
 
 
